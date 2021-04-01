@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shipping_address: MyString
+  date: 2021-03-31
+  order_status: MyString
+  customer: one
+
+two:
+  shipping_address: MyString
+  date: 2021-03-31
+  order_status: MyString
+  customer: two
