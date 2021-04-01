@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_01_001146) do
+ActiveRecord::Schema.define(version: 2021_04_01_001431) do
+
+  create_table "candles", force: :cascade do |t|
+    t.string "scent"
+    t.string "colour"
+    t.string "size"
+    t.decimal "price"
+    t.integer "order_detail_id", null: false
+    t.integer "type_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_detail_id"], name: "index_candles_on_order_detail_id"
+    t.index ["type_id"], name: "index_candles_on_type_id"
+  end
 
   create_table "customers", force: :cascade do |t|
     t.string "username"
@@ -48,6 +61,8 @@ ActiveRecord::Schema.define(version: 2021_04_01_001146) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "candles", "order_details"
+  add_foreign_key "candles", "types"
   add_foreign_key "order_details", "orders"
   add_foreign_key "orders", "customers"
 end
