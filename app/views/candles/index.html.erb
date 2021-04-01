@@ -1,2 +1,8 @@
-<h1>Candles#index</h1>
-<p>Find me in app/views/candles/index.html.erb</p>
+<h1>Candles</h1>
+
+<% @candles.each do |candle| %>
+  <p><%= link_to candle.scent, candle%></p>
+  <% if candle.image.present? %>
+    <%= image_tag candle.image%>
+  <% end %>
+<% end %>
