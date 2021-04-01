@@ -4,6 +4,6 @@ class CustomersController < ApplicationController
   end
 
   def show
-    @customer = Adventurer.find(params[:id])
+    @customer = Customer.find(params[:id])
   end
 end
