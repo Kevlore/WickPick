@@ -5,7 +5,7 @@ ActiveAdmin.register Candle do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :scent, :colour, :size, :price, :order_detail_id, :type_id
+  permit_params :scent, :colour, :size, :price, :order_detail_id, :type_id
   #
   # or
   #
@@ -14,5 +14,5 @@ ActiveAdmin.register Candle do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+
 end

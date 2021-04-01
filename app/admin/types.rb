@@ -5,7 +5,7 @@ ActiveAdmin.register Type do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :type
+  permit_params :type_name
   #
   # or
   #
@@ -14,5 +14,5 @@ ActiveAdmin.register Type do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+
 end
