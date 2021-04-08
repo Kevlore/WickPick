@@ -9,5 +9,13 @@ Rails.application.routes.draw do
   resources :types, only: %i[index show]
   get 'customers/index'
   get 'customers/show'
+
+  scope "/checkout" do
+    post "create", to: "checkout#create", as: "checkout_create"
+    post "success", to: "checkout#success", as: "checkout_success"
+    post "cancel", to: "checkout#cancel", as: "checkout_cancel"
+  end
+
+  root to: "candles#index"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

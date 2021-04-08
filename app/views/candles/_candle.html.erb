@@ -2,7 +2,7 @@
     <div class="card-content">
       <p class="title is-5"><%= link_to candle.scent, candle%></p>
       <P class="subtitle">Type: <%= candle.type.type_name%></P>
-      <p class="subtitle">Price: $<%= candle.price %></p>
+      <p class="subtitle">Price: <%= number_to_currency candle.price %></p>
     </div>
     <% if candle.image.present? %>
       <div class="card-image">
@@ -10,5 +10,9 @@
           <%= image_tag candle.image, style: 'height:200px;width:130px'%>
         </figure>
       </div>
+    <% end %>
+    <%= form_with url: checkout_create_path(format: :js), remote: true do %>
+      <%= hidden_field_tag(:candle_id, candle.id) %>
+      <%= button_tag 'Purchase' %>
     <% end %>
 </div>
