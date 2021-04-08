@@ -1,0 +1,13 @@
+<div class="card">
+    <div class="card-content">
+      <p class="title is-5"><%= link_to candle.scent, candle%></p>
+      <p class="subtitle">Price: $<%= candle.price %></p>
+    </div>
+    <% if candle.image.present? %>
+      <div class="card-image">
+        <figure class="image">
+          <%= image_tag candle.image, style: 'height:200px;width:130px'%>
+        </figure>
+      </div>
+    <% end %>
+</div>

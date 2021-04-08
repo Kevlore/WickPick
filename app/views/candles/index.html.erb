@@ -1,17 +1,9 @@
 <h1 class="title is-h1">Candles</h1>
 
-<div class="card">
-  <% @candles.each do |candle| %>
-    <div class="card-content">
-      <p class="title is-5"><%= link_to candle.scent, candle%></p>
-      <p class="subtitle">Price: $<%= candle.price %></p>
-    </div>
-    <% if candle.image.present? %>
-      <div class="card-image">
-        <figure class="image">
-          <%= image_tag candle.image, style: 'height:200px;width:130px'%>
-        </figure>
-      </div>
-    <% end %>
-  <% end %>
+<div>
+  <%= render partial: 'candles/candle',
+             collection: @candles,
+             locals: {show_link: true} %>
 </div>
+
+
