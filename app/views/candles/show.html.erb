@@ -2,6 +2,7 @@
 <div class="card">
   <div class="card-content">
     <h1 class="title is-h1"><%= @candle.scent %></h1>
+    <p class="subtitle">Type: <%= @candle.type.type_name%></p>
     <p class="subtitle">Colour: <%= @candle.colour %></p>
     <p class="subtitle">Size: <%= @candle.size %></p>
     <p class="subtitle">Price: $<%=@candle.price %></p>

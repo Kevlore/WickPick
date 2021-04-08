@@ -1,6 +1,7 @@
 <div class="card">
     <div class="card-content">
       <p class="title is-5"><%= link_to candle.scent, candle%></p>
+      <P class="subtitle">Type: <%= candle.type.type_name%></P>
       <p class="subtitle">Price: $<%= candle.price %></p>
     </div>
     <% if candle.image.present? %>
