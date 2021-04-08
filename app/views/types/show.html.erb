@@ -1,2 +1,5 @@
-<h1>Types#show</h1>
-<p>Find me in app/views/types/show.html.erb</p>
+<h1 class="title is-h1"><%= @type.type_name %> Candles</h1>
+
+<%= render partial: '/candles/candle',
+            collection: @type.candle.all,
+            locals: {show_link: true} %>
