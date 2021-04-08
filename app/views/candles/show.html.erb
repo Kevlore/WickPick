@@ -1,2 +1,16 @@
-<h1>Candles#show</h1>
-<p>Find me in app/views/candles/show.html.erb</p>
+<h1 class="title is-h1"><%= link_to "Candles", "/candles" %></h1>
+<div class="card">
+  <div class="card-content">
+    <h1 class="title is-h1"><%= @candle.scent %></h1>
+    <p class="subtitle">Colour: <%= @candle.colour %></p>
+    <p class="subtitle">Size: <%= @candle.size %></p>
+    <p class="subtitle">Price: $<%=@candle.price %></p>
+  </div>
+  <% if @candle.image.present? %>
+    <div class="card-image">
+      <figure class="image">
+        <%= image_tag @candle.image, style: 'height:400px;width:260px'%>
+      </figure>
+    </div>
+  <% end %>
+</div>
