@@ -1,6 +1,6 @@
 class CandlesController < ApplicationController
   def index
-    @candles = Candle.all
+    @candles = Candle.page params[:page]
   end
 
   def show
