@@ -14,4 +14,15 @@
       </figure>
     </div>
   <% end %>
+
+  <% if cart.include?(@candle) %>
+    <%= button_to cart_path(@candle), method: :delete do %>
+      Remove From Cart
+    <% end %>
+  <% else %>
+    <%= form_with url: cart_index_path, method: :post do %>
+      <%= hidden_field_tag(:id, @candle.id) %>
+      <%= button_tag 'Add to Cart' %>
+    <% end %>
+  <% end %>
 </div>

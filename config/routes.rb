@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   resources :candles, only: %i[index show]
   resources :types, only: %i[index show]
+  resources :cart, only: %i[create destroy]
   get 'customers/index'
   get 'customers/show'
 
