@@ -26,6 +26,8 @@ gem 'activeadmin'
 
 gem 'devise'
 
+gem 'faker'
+
 gem 'stripe'
 gem 'kaminari'
 
