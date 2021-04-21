@@ -1,5 +1,7 @@
 <h1 class="title is-h1">Candle Types</h1>
 
+<p class='menu-label'><%= link_to "Candles", candles_path %> » <%= link_to "Candle Types", types_path %></p>
+
 <% @types.each do |type| %>
   <h3 class="title is-h3"><%= link_to type.type_name, type %></h3>
 <% end %>

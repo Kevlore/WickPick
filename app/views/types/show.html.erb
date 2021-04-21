@@ -1,5 +1,7 @@
 <h1 class="title is-h1"><%= @type.type_name %> Candles</h1>
 
+<p class='menu-label'><%= link_to "Candles", candles_path %> » <%= link_to "Candle Types", types_path %> » <%= link_to @type.type_name, "/types/#{@type.id}" %></p>
+
 <%= render partial: '/candles/candle',
             collection: @type.candle.all,
             locals: {show_link: true} %>

@@ -1,5 +1,7 @@
 <h1 class="title is-h1">Candles</h1>
 
+<p class='menu-label'><%= link_to "Candles", candles_path %> »</p>
+
 <%= form_tag(candles_path, method: :get) do %>
   <%= text_field_tag :keywords, params[:keywords] %>
   <%= collection_select :type, :type_id, Type.all, :id, :type_name, {include_blank: 'Select Category'} %>
