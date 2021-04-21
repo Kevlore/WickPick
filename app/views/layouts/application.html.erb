@@ -14,12 +14,16 @@
 
   <body>
     <%# Devise login %>
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
+    <p>
+      <% if customer_signed_in? %>
+        Logged in as <strong><%= current_customer.username %></strong>.
+        <%= link_to 'Edit profile', edit_customer_registration_path, :class => 'menu-label' %> |
+        <%= link_to "Logout", destroy_customer_session_path, method: :delete, :class => 'menu-label'  %>
+      <% else %>
+        <%= link_to "Sign up", new_customer_registration_path, :class => 'menu-label'  %> |
+        <%= link_to "Login", new_customer_session_path, :class => 'menu-label'  %>
+      <% end %>
+    </p>
     <nav>
       <ul>
         <li>
