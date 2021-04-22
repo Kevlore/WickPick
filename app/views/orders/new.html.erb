@@ -1,35 +1,47 @@
 <h1>New Order</h1>
 
 <%= form_with model: @order do |form| %>
-  <div>
-    <%= form.label :shipping_address %><br>
-    <%= form.text_field :shipping_address, :value =>  @customer.address%>
-  </div>
 
+  <%
+    province = Province.find(@customer.provinces_id)
+    pst = province.pst
+    gst = province.gst
+    hst = province.hst
+  %>
+
+  <%= form.hidden_field :shipping_address, :value => @customer.address %>
   <%= form.hidden_field :date, :value => Date.today %>
   <%= form.hidden_field :order_status, :value => "Order Sent" %>
-  <% province = Province.find(@customer.provinces_id) %>
-  <%= form.hidden_field :pst, :value =>  province.pst %>
+  <%= form.hidden_field :pst, :value =>  pst %>
   <%= form.hidden_field :gst, :value =>  province.gst %>
   <%= form.hidden_field :hst, :value =>  province.hst %>
-  <%= form.hidden_field :customer, :value =>  @customer %>
+  <%= form.hidden_field :customer, :value =>  @customer.id %>
 
   <%
     cart = session[:shopping_cart]
+    subtotal = 0;
     cart.each do |item|
       candle = Candle.find(item)
+      subtotal = subtotal + candle.price
   %>
     <div class="card mb-5">
       <div class="card-content">
         <p class="card-header"><%=candle.scent%></p>
-        <p class="content"><%=candle.price%></p>
-        <p class="content"><%=candle.size%></p>
+        <p class="content">Weight: <%=candle.size%></p>
+        <p class="content">Colour: <%=candle.colour%></p>
+        <p class="content">Price: <%=number_to_currency(candle.price)%></p>
       </div>
+    <% end %>
+    <div class="card-footer pt-5">
+      <p class="content ml-5 mb-2">Subtotal: <%= number_to_currency(subtotal) %></p>
+      <p class="content ml-5 mb-2">PST: <%= number_to_currency(subtotal*pst) %></p>
+      <p class="content ml-5 mb-2">GST: <%= number_to_currency(subtotal*gst) %></p>
+      <p class="content ml-5 mb-2">HST: <%= number_to_currency(subtotal*hst) %></p>
+      <p class="content ml-5 mb-2">Total: <%= number_to_currency(subtotal + (subtotal * pst) + (subtotal * gst) + (subtotal * hst)) %></p>
     </div>
-      <%
-    end
-  %>
+  </div>
 
+  <%= form.hidden_field :price, :value =>  subtotal + (subtotal * pst) + (subtotal * gst) + (subtotal * hst) %>
 
   <div>
     <%= form.submit %>
