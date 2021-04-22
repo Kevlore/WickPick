@@ -26,7 +26,7 @@
   %>
     <div class="card mb-5">
       <div class="card-content">
-        <p class="card-header"><%=candle.scent%></p>
+        <p class="card-header has-text-weight-bold"><%=candle.scent%></p>
         <p class="content">Weight: <%=candle.size%></p>
         <p class="content">Colour: <%=candle.colour%></p>
         <p class="content">Price: <%=number_to_currency(candle.price)%></p>
@@ -38,12 +38,12 @@
       <p class="content ml-5 mb-2">PST: <%= number_to_currency(subtotal*pst) %></p>
       <p class="content ml-5 mb-2">GST: <%= number_to_currency(subtotal*gst) %></p>
       <p class="content ml-5 mb-2">HST: <%= number_to_currency(subtotal*hst) %></p>
-      <p class="content ml-5 mb-2">Total: <%= number_to_currency(subtotal + (subtotal * pst) + (subtotal * gst) + (subtotal * hst)) %></p>
+      <p class="content ml-5 mb-2 has-text-weight-bold">Total: <%= number_to_currency(subtotal + (subtotal * pst) + (subtotal * gst) + (subtotal * hst)) %></p>
     </div>
 
   <%= form.hidden_field :price, :value =>  subtotal + (subtotal * pst) + (subtotal * gst) + (subtotal * hst) %>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class: 'button is-success is-fullwidth'%>
   </div>
 <% end %>

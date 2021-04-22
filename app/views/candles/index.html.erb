@@ -3,17 +3,19 @@
 <p class='menu-label'><%= link_to "Candles", candles_path %> »</p>
 
 <%= form_tag(candles_path, method: :get) do %>
-  <%= text_field_tag :keywords, params[:keywords] %>
-  <%= collection_select :type, :type_id, Type.all, :id, :type_name, {include_blank: 'Select Category'} %>
-  <%= submit_tag 'Search', name: nil %>
+  <div class="field has-addons">
+    <%= text_field_tag :keywords, params[:keywords], class: 'input' %>
+    <%= collection_select :type, :type_id, Type.all, :id, :type_name, {include_blank: 'Select Category'}, class: 'control select is-expanded' %>
+    <%= submit_tag 'Search', name: nil, class: 'button is-info' %>
+  </div>
 <% end %>
 
 <section class='section is-flex'>
-<div class="tile is-flex is-flex-wrap-wrap">
-  <%= render partial: 'candles/candle',
-             collection: @candles,
-             locals: {show_link: true} %>
-</div>
+  <div class="tile is-flex is-flex-wrap-wrap">
+    <%= render partial: 'candles/candle',
+              collection: @candles,
+              locals: {show_link: true} %>
+  </div>
 </section>
 <%= paginate @candles %>
 

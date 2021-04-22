@@ -1,4 +1,4 @@
-<div class="tile is-2">
+<div class="tile is-2 mb-5">
   <div class="card">
     <div class="card-content">
       <p class="title is-6"><%= link_to candle.scent.truncate(10), candle%></p>
@@ -20,7 +20,7 @@
         <% end %>
       <% else %>
         <%= form_with url: cart_index_path, method: :post do %>
-          <%= hidden_field_tag(:id, candle.id) %>
+          <%= hidden_field_tag(:id, candle.id, id: candle.id) %>
           <%= button_tag 'Add to Cart', class: 'button is-success is-fullwidth' %>
         <% end %>
       <% end %>

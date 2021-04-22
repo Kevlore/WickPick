@@ -2,6 +2,10 @@
 
 <p class='menu-label'><%= link_to "Candles", candles_path %> » <%= link_to "Candle Types", types_path %> » <%= link_to @type.type_name, "/types/#{@type.id}" %></p>
 
-<%= render partial: '/candles/candle',
-            collection: @type.candle.all,
-            locals: {show_link: true} %>
+<section class='section is-flex'>
+  <div class="tile is-flex is-flex-wrap-wrap">
+    <%= render partial: '/candles/candle',
+                collection: @type.candle.all,
+                locals: {show_link: true} %>
+  </div>
+</section>
