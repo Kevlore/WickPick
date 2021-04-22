@@ -31,6 +31,7 @@
         <p class="content">Colour: <%=candle.colour%></p>
         <p class="content">Price: <%=number_to_currency(candle.price)%></p>
       </div>
+    </div>
     <% end %>
     <div class="card-footer pt-5">
       <p class="content ml-5 mb-2">Subtotal: <%= number_to_currency(subtotal) %></p>
@@ -39,7 +40,6 @@
       <p class="content ml-5 mb-2">HST: <%= number_to_currency(subtotal*hst) %></p>
       <p class="content ml-5 mb-2">Total: <%= number_to_currency(subtotal + (subtotal * pst) + (subtotal * gst) + (subtotal * hst)) %></p>
     </div>
-  </div>
 
   <%= form.hidden_field :price, :value =>  subtotal + (subtotal * pst) + (subtotal * gst) + (subtotal * hst) %>
 

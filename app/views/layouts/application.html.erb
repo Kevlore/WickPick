@@ -12,8 +12,7 @@
     <script src="https://js.stripe.com/v3"></script>
   </head>
 
-  <body>
-  <div class="content">
+  <body class="content">
     <%# Devise login %>
     <p>
       <% if customer_signed_in? %>
@@ -30,14 +29,15 @@
         <li>
           Cart
           <% if cart.present? %>
-          <sup><%= cart.size %></sup>
-          <ul>
-            <% cart.each do |candle| %>
-            <li>
-              <%= candle.scent %> <%= link_to 'Remove', cart_path(candle), method: :delete%>
-            </li>
-            <% end %>
-          </ul>
+            <sup><%= cart.size %></sup>
+            <ul>
+              <% cart.each do |candle| %>
+              <li>
+                <%= candle.scent %> <%= link_to 'Remove', cart_path(candle), method: :delete%>
+              </li>
+              <% end %>
+            </ul>
+            <%= link_to "Order Cart", "/orders/new" %>
           <% end %>
         </li>
       </ul>
@@ -47,6 +47,5 @@
       <p><%= flash[:notice] %></p>
     <% end %>
     <%= yield %>
-  </div>
   </body>
 </html>

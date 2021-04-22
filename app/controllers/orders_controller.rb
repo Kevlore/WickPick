@@ -39,7 +39,26 @@ class OrdersController < ApplicationController
       customer: customer_id
     )
 
+    cart = session[:shopping_cart]
+    cart.each do |item|
+      candle = Candle.find(item)
+
+      order_detail = OrderDetail.create(
+        price: candle.price,
+        quantity: 1,
+        candle: candle,
+        order: new_order
+      )
+
+      if order_detail.valid?
+        # redirect_to "/candles"
+      else
+        flash[:notice] = order_detail.errors.messages
+      end
+    end
+
     if new_order.valid?
+      session[:shopping_cart] = nil
       redirect_to "/candles"
     else
       render :new
