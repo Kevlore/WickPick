@@ -4,7 +4,7 @@ class Candle < ApplicationRecord
   validates :price, numericality: true
   has_one_attached :image
 
-  paginates_per 5
+  paginates_per 24
 
   def self.search(keywords)
     if keywords

@@ -8,10 +8,12 @@
   <%= submit_tag 'Search', name: nil %>
 <% end %>
 
-<div>
+<section class='section is-flex'>
+<div class="tile is-flex is-flex-wrap-wrap">
   <%= render partial: 'candles/candle',
              collection: @candles,
              locals: {show_link: true} %>
 </div>
+</section>
 <%= paginate @candles %>
 

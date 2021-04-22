@@ -15,14 +15,16 @@
     </div>
   <% end %>
 
-  <% if cart.include?(@candle) %>
-    <%= button_to cart_path(@candle), method: :delete do %>
-      Remove From Cart
+  <div class="card-content">
+    <% if cart.include?(@candle) %>
+      <%= button_to cart_path(@candle), class: 'button is-danger is-fullwidth', method: :delete do %>
+        Remove
+      <% end %>
+    <% else %>
+      <%= form_with url: cart_index_path, method: :post do %>
+        <%= hidden_field_tag(:id, @candle.id) %>
+        <%= button_tag 'Add to Cart', class: 'button is-success is-fullwidth' %>
+      <% end %>
     <% end %>
-  <% else %>
-    <%= form_with url: cart_index_path, method: :post do %>
-      <%= hidden_field_tag(:id, @candle.id) %>
-      <%= button_tag 'Add to Cart' %>
-    <% end %>
-  <% end %>
+  </div>
 </div>
