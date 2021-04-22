@@ -13,6 +13,7 @@
   </head>
 
   <body>
+  <div class="content">
     <%# Devise login %>
     <p>
       <% if customer_signed_in? %>
@@ -46,5 +47,6 @@
       <p><%= flash[:notice] %></p>
     <% end %>
     <%= yield %>
+  </div>
   </body>
 </html>
